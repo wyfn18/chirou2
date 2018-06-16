@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>需求原型</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+            $(function () {
+                $.ajax({
+                    url : '/file',
+                    type : 'get',
+                    success : function (data) {
+                        for(var i=0; i<data.length; i++){
+                            var $a = $("<a target='_blank'/>");
+                            $a.attr("href","model/" + data[i] + "/start.html");
+                            $a.text(data[i]);
+                            $("#yx_list").append($("<div/>").append($a));
+                        }
+                    }
+                });
+            });
+    </script>
+</head>
+<body>
+    <h1>原型列表</h1>
+    <div id="yx_list"></div>
+</body>
+</html>
