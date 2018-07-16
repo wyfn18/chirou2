@@ -54,28 +54,19 @@
     <script type="text/javascript">
             $(function () {
                 $.ajax({
-                    url : '/file',
+                    url : '/file/jp',
                     type : 'get',
                     success(data) {
-                        var wms = data.wmsList || [],
-                            tms = data.tmsList || [];
-                        wms.forEach(x => {
+
+                        data.forEach(x => {
                             var $li = $('<li>');
                             var $a = $('<a>');
-                            $a.attr('href', "model/wms/" + x.name + "/start.html").html(x.name);
+                            $a.attr('href', "model/jp/" + x.name + "/start.html").html(x.name);
                             var $span = $(`<span class="date">${x.updateTime}</span>`);
                             $li.append($a).append($span);
-                            $('.wms').append($li);
+                            $('.jp').append($li);
                         });
 
-                        tms.forEach(x => {
-                            var $li = $('<li>');
-                            var $a = $('<a>');
-                            $a.attr('href', "model/tms/" + x.name + "/start.html").html(x.name);
-                            var $span = $(`<span class="date">${x.updateTime}</span>`);
-                            $li.append($a).append($span);
-                            $('.tms').append($li);
-                        });
                     },
                     error(err){
                         console.log(err);
@@ -87,12 +78,8 @@
 <body>
     <div class="wrap">
         <div class="fl">
-            <h2 class="fl">云仓</h2>
-            <ol class="fl wms"></ol>
-        </div>
-        <div class="fl">
-            <h2 class="fl">智达</h2>
-            <ol class="fl tms"></ol>
+            <h2 class="fl">极配</h2>
+            <ol class="fl jp"></ol>
         </div>
     </div>
 </body>

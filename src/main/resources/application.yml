@@ -1,3 +1,5 @@
-file-path: d:/model
+filePath: d:/uqi
 server:
   port: 8888
+  thymeleaf:
+      prefix: classpath:/static/
