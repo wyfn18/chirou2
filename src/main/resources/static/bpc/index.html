@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta />
+    <title>需求原型</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+        .wrap{
+            overflow: hidden;
+        }
+        .wrap  > .fl{
+              float: left;
+              width: 50%;
+          }
+        @media (max-width: 1200px) {
+            .wrap > .fl{
+                float: left;
+                width: 100%;
+            }
+        }
+        .wrap   h2.fl{
+            text-align: center;
+        }
+        .wrap   ol{
+            padding: 0 20px ;
+        }
+        .wrap ol > li{
+            height: 30px;
+            line-height: 30px;
+        }
+        .wrap ol > li >a{
+            display: block;
+            height:30px;
+            line-height: 30px;
+            overflow: hidden;
+        }
+        .wrap ol > li>  a{
+            float: left;
+            font-size: 16px;
+        }
+        .wrap ol > li > .date{
+            float: right;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery.js"></script>
+    <script type="text/javascript">
+            $(function () {
+                $.ajax({
+                    url : '/file/bpc',
+                    type : 'get',
+                    success(data) {
+
+                        data.forEach(x => {
+                            var $li = $('<li>');
+                            var $a = $('<a>');
+                            $a.attr('href', "model/bpc/" + x.name + "/start.html").html(x.name);
+                            var $span = $(`<span class="date">${x.updateTime}</span>`);
+                            $li.append($a).append($span);
+                            $('.jp').append($li);
+                        });
+
+                    },
+                    error(err){
+                        console.log(err);
+                    }
+                });
+            });
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="fl">
+            <h2 class="fl">新版流程引擎</h2>
+            <ol class="fl jp"></ol>
+        </div>
+    </div>
+</body>
+</html>

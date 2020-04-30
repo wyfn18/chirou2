@@ -1,0 +1,6 @@
+filePath: /opt/ultrapower/chirou/model
+spring:
+  resources:
+    static-locations: classpath:/static/bpc/
+server:
+  port: 8888
